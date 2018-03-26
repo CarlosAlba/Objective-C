@@ -1,4 +1,4 @@
-#  Yahoo Code Challenge - Shark Feed
+#  Yahoo CodeChallenge - Shark Feed
 
 ## Instructions
 
@@ -6,7 +6,8 @@ Using the Flickr search API create an infinite scrolling list of shark photos. T
 
 * Use Objective-C.
 * Use a UICollectionView for the infinite scrolling feed.
-* Use NSURLSession to fetch responses from the Flickr search API. ● Use Auto Layout (OK to use third-party wrappers)
+* Use NSURLSession to fetch responses from the Flickr search API.
+* Use Auto Layout (OK to use third-party wrappers)
 * Support iOS 9.
 
 ## API
