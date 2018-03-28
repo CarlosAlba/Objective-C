@@ -70,12 +70,11 @@
     
     NSString *sharkGetInfoURL = @"&photo_id=";
     NSString *sharkGetInfoID = self.sharkObjecj.sharkID;
-    NSString *sharkGetInfoSuffix =  @"";
+
     
-    [self.sharkParse sharkAPICall:[NSString stringWithFormat:@"%@%@%@",
+    [self.sharkParse sharkAPICall:[NSString stringWithFormat:@"%@%@",
                                    sharkGetInfoURL,
-                                   sharkGetInfoID,
-                                   sharkGetInfoSuffix]];
+                                   sharkGetInfoID]];
 }
 
 #pragma mark IBActions
@@ -113,6 +112,10 @@
     }
 }
 
+- (IBAction)SFBackButton:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark SharkFeedParse Delegate
 
 - (void)apiResponse:(NSDictionary *)sharkAPIResponse {
@@ -124,5 +127,4 @@
         }
     }];
 }
-
 @end

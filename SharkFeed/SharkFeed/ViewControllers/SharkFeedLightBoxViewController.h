@@ -27,6 +27,7 @@
 
 
 // MARK: IBAction
+- (IBAction)SFBackButton:(UIButton *)sender;
 - (IBAction)SFDownloadActionButton:(UIButton *)sender;
 - (IBAction)SFFlicrActionButton:(UIButton *)sender;
 
