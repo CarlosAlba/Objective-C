@@ -37,15 +37,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pull to refresh 2" translatesAutoresizingMaskIntoConstraints="NO" id="OnU-eo-SCF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <rect key="frame" x="2" y="2" width="96" height="96"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="0.29618892070000002" green="0.61014586689999994" blue="0.87846511599999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="OnU-eo-SCF" secondAttribute="bottom" id="LPg-QX-8az"/>
-                                            <constraint firstItem="OnU-eo-SCF" firstAttribute="top" secondItem="rBg-q4-Y6Q" secondAttribute="top" id="Oje-bi-p1D"/>
-                                            <constraint firstItem="OnU-eo-SCF" firstAttribute="leading" secondItem="rBg-q4-Y6Q" secondAttribute="leading" id="dbK-uc-nvS"/>
-                                            <constraint firstAttribute="trailing" secondItem="OnU-eo-SCF" secondAttribute="trailing" id="qHf-aw-hBk"/>
+                                            <constraint firstAttribute="bottom" secondItem="OnU-eo-SCF" secondAttribute="bottom" constant="2" id="LPg-QX-8az"/>
+                                            <constraint firstItem="OnU-eo-SCF" firstAttribute="top" secondItem="rBg-q4-Y6Q" secondAttribute="top" constant="2" id="Oje-bi-p1D"/>
+                                            <constraint firstItem="OnU-eo-SCF" firstAttribute="leading" secondItem="rBg-q4-Y6Q" secondAttribute="leading" constant="2" id="dbK-uc-nvS"/>
+                                            <constraint firstAttribute="trailing" secondItem="OnU-eo-SCF" secondAttribute="trailing" constant="2" id="qHf-aw-hBk"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="sharkImage" destination="OnU-eo-SCF" id="9KN-dE-oO0"/>
