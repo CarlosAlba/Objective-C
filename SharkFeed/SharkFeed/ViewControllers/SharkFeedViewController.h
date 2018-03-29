@@ -17,6 +17,8 @@
 @property (strong, nonatomic) SharkFeedParse   * sharkParse;
 @property (strong, nonatomic) SFShark          * sharkObjecjSelected;
 
+@property (strong) NSMutableArray *shark;
+
 @property (nonatomic, assign) CGFloat lastContentOffset;
 
 // MARK: IBOutlet

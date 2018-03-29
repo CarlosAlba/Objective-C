@@ -10,6 +10,7 @@
 #import "SharkFeedCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "SharkFeedLightBoxViewController.h"
+#import <CoreData/CoreData.h>
 
 @interface SharkFeedViewController ()
 
@@ -37,6 +38,11 @@ static NSString * const reuseIdentifier = @"sharkCell";
     self.sharkParse.delegate = self;
     
     [self.sharkParse sharkAPICall:@""];
+    
+    // Fetch the devices from persistent data store
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Shark"];
+    self.shark = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
     // Refresh
     self.refreshControl = [[UIRefreshControl alloc]init];
@@ -106,6 +112,18 @@ static NSString * const reuseIdentifier = @"sharkCell";
     
     self.sharkObjecjSelected = [self.sharkElements objectAtIndex:indexPath.row];
     
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    // Create a new managed object
+    NSManagedObject *newShark = [NSEntityDescription insertNewObjectForEntityForName:@"Shark" inManagedObjectContext:context];
+    [newShark setValue:self.sharkObjecjSelected.sharkID forKey:@"id_Shark"];
+    
+    NSError *error = nil;
+    // Save the object to persistent store
+    if (![context save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    
     [self performSegueWithIdentifier:@"SFLightBoxSegue" sender:self];
 }
 
@@ -148,6 +166,17 @@ static NSString * const reuseIdentifier = @"sharkCell";
             [self.sharkCollectionView reloadData];
         }
     }];
+}
+
+#pragma mark SharkFeed CoreData
+
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate respondsToSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
 }
 
 @end

@@ -19,6 +19,7 @@
 		B51295BC202638CC00114CB4 /* SharkFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51295BB202638CC00114CB4 /* SharkFeedViewController.m */; };
 		B51E84E82069AA9400DBFA3D /* TestAppDesign.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E84E72069AA9400DBFA3D /* TestAppDesign.png */; };
 		B51E84EA2069AA9A00DBFA3D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B51E84E92069AA9A00DBFA3D /* README.md */; };
+		B51E856F206C5D7100DBFA3D /* SharkFeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B51E856D206C5D7100DBFA3D /* SharkFeed.xcdatamodeld */; };
 		B56DCD772026C86B00E944CA /* SharkFeedLightBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56DCD762026C86B00E944CA /* SharkFeedLightBoxViewController.m */; };
 		B56DCD7A2027026300E944CA /* SFShark.m in Sources */ = {isa = PBXBuildFile; fileRef = B56DCD792027026300E944CA /* SFShark.m */; };
 		B56DCD7D202702D200E944CA /* SharkFeedParse.m in Sources */ = {isa = PBXBuildFile; fileRef = B56DCD7C202702D200E944CA /* SharkFeedParse.m */; };
@@ -65,6 +66,7 @@
 		B51295BB202638CC00114CB4 /* SharkFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharkFeedViewController.m; sourceTree = "<group>"; };
 		B51E84E72069AA9400DBFA3D /* TestAppDesign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TestAppDesign.png; sourceTree = "<group>"; };
 		B51E84E92069AA9A00DBFA3D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B51E856E206C5D7100DBFA3D /* SharkModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SharkModel.xcdatamodel; sourceTree = "<group>"; };
 		B56DCD752026C86B00E944CA /* SharkFeedLightBoxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharkFeedLightBoxViewController.h; sourceTree = "<group>"; };
 		B56DCD762026C86B00E944CA /* SharkFeedLightBoxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharkFeedLightBoxViewController.m; sourceTree = "<group>"; };
 		B56DCD782027026300E944CA /* SFShark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFShark.h; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				B51295882025C36B00114CB4 /* Assets.xcassets */,
 				B512958D2025C36B00114CB4 /* Info.plist */,
 				B512958E2025C36B00114CB4 /* main.m */,
+				B51E856D206C5D7100DBFA3D /* SharkFeed.xcdatamodeld */,
 			);
 			path = SharkFeed;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B56DCD7A2027026300E944CA /* SFShark.m in Sources */,
+				B51E856F206C5D7100DBFA3D /* SharkFeed.xcdatamodeld in Sources */,
 				B512958F2025C36B00114CB4 /* main.m in Sources */,
 				B51295B6202631A100114CB4 /* SharkFeedCollectionViewCell.m in Sources */,
 				B51295812025C36B00114CB4 /* AppDelegate.m in Sources */,
@@ -692,6 +696,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B51E856D206C5D7100DBFA3D /* SharkFeed.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B51E856E206C5D7100DBFA3D /* SharkModel.xcdatamodel */,
+			);
+			currentVersion = B51E856E206C5D7100DBFA3D /* SharkModel.xcdatamodel */;
+			path = SharkFeed.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B51295742025C36B00114CB4 /* Project object */;
 }
