@@ -42,7 +42,10 @@ static NSString * const reuseIdentifier = @"sharkCell";
     // Fetch the devices from persistent data store
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Shark"];
-    self.shark = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    [fetchRequest setPropertiesToFetch:@[@"id_Shark"]];
+    
+    NSArray* results = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    self.shark = [[results valueForKey:@"id_Shark"] mutableCopy];
     
     // Refresh
     self.refreshControl = [[UIRefreshControl alloc]init];
@@ -76,8 +79,7 @@ static NSString * const reuseIdentifier = @"sharkCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SharkFeedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    NSLog(@"%@\n",[NSURL URLWithString:((SFShark *)[self.sharkElements objectAtIndex:indexPath.row]).sharkThumbnail]);
-    
+
     NSString *imageURL = ((SFShark *)[self.sharkElements objectAtIndex:indexPath.row]).sharkThumbnail;
     
     [cell.sharkImage setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]]
@@ -91,6 +93,10 @@ static NSString * const reuseIdentifier = @"sharkCell";
                                                         }
                                                         completion:NULL];
                                     } failure:nil];
+    // Checking the information 
+    if ([self.shark containsObject:((SFShark *)[self.sharkElements objectAtIndex:indexPath.row]).sharkID]) {
+        cell.backgroundColor = [UIColor redColor];
+    }
     
     return cell;
 }
@@ -110,19 +116,37 @@ static NSString * const reuseIdentifier = @"sharkCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    SharkFeedCollectionViewCell *sharkCell = ((SharkFeedCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath]);
+    sharkCell.backgroundColor = [UIColor redColor];
+    
+    // Data persistance
+    
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+   
+    
     self.sharkObjecjSelected = [self.sharkElements objectAtIndex:indexPath.row];
-    
+        
     NSManagedObjectContext *context = [self managedObjectContext];
+        
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Shark"];
+    [fetchRequest setPropertiesToFetch:@[@"id_Shark"]];
+        
+    NSArray* results = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    self.shark = [[results valueForKey:@"id_Shark"] mutableCopy];
     
-    // Create a new managed object
-    NSManagedObject *newShark = [NSEntityDescription insertNewObjectForEntityForName:@"Shark" inManagedObjectContext:context];
-    [newShark setValue:self.sharkObjecjSelected.sharkID forKey:@"id_Shark"];
-    
-    NSError *error = nil;
-    // Save the object to persistent store
-    if (![context save:&error]) {
-        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    if (![self.shark containsObject:((SFShark *)[self.sharkElements objectAtIndex:indexPath.row]).sharkID]) {
+        
+        // Create a new managed object
+        NSManagedObject *newShark = [NSEntityDescription insertNewObjectForEntityForName:@"Shark" inManagedObjectContext:context];
+        [newShark setValue:self.sharkObjecjSelected.sharkID forKey:@"id_Shark"];
+        
+        NSError *error = nil;
+        // Save the object to persistent store
+        if (![context save:&error]) {
+            NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+        }
     }
+    
     
     [self performSegueWithIdentifier:@"SFLightBoxSegue" sender:self];
 }
